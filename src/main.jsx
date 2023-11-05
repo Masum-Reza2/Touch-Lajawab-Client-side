@@ -4,6 +4,8 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import Router from './Routes/Router.jsx'
 import ControlRoom from './ControlRoom/ControlRoom.jsx'
+
+// tanstack query
 import {
   QueryClient,
   QueryClientProvider,
