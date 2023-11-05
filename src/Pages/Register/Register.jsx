@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useState } from "react";
 import toast from 'react-hot-toast';
 /* eslint-disable react/no-unescaped-entities */
 import registerImg from '../../assets/images/registerImg.jpg'
+import useGlobal from "../../Hooks/useGlobal";
 
 const Register = () => {
     const [showPaas, setShowPaas] = useState(false);
+    const { createUser, logOutUser, updateUserProfile } = useGlobal();
+    const navigate = useNavigate();
 
     // function for password toggle 
     const handleTogglePass = () => {
@@ -22,7 +25,7 @@ const Register = () => {
         const email = form.get('email');
         const password = form.get('password');
 
-        console.log(name, photo, email, password)
+        // console.log(name, photo, email, password)
 
         // password validations
         if (password.length < 6) {
@@ -32,6 +35,26 @@ const Register = () => {
             return toast.error('Include at least 1 Capital letter and 1 Special Charecter.')
         }
 
+        // creating user
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                if (user) {
+                    toast.success(`Account created successfully!`);
+                    logOutUser();
+
+                    //  loggingout silently
+                    navigate('/login');
+
+                    // updating user profile silently
+                    updateUserProfile(name, photo);
+
+                    // send to database here
+                }
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
 
         //cleaning input fields
         // e.target.reset()

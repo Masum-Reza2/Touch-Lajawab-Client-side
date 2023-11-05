@@ -5,5 +5,4 @@ const useGlobal = () => {
     const globalInfo = useContext(GlobalContext);
     return globalInfo;
 }
-
 export default useGlobal

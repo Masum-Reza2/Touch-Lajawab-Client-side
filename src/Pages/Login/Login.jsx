@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useState } from "react";
 
 import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from 'react-icons/bs';
 import loginImg from '../../assets/images/loginImg.jpg'
+import useGlobal from "../../Hooks/useGlobal";
+import toast from "react-hot-toast";
 
 
 /* eslint-disable react/no-unescaped-entities */
 const Login = () => {
     const [showPaas, setShowPaas] = useState(false);
+    const navigate = useNavigate();
+    const { state } = useLocation();
+    const { loginUser, googleLogin, gitHubLogin } = useGlobal();
 
     const handleTogglePass = () => {
         setShowPaas(!showPaas)
@@ -20,9 +25,40 @@ const Login = () => {
         const form = new FormData(e.currentTarget)
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password);
+        // console.log(email, password);
+
+        // logging in user
+        loginUser(email, password)
+            .then(result => {
+                const user = result.user;
+                if (user) {
+                    toast.success('Login successfull!');
+                    navigate(state || '/');
+
+                    // update something in db here
+                }
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
     }
 
+    // Additional login
+    const handleAdditional = (additional) => {
+        additional()
+            .then(result => {
+                const user = result.user;
+                if (user) {
+                    navigate(state || '/');
+                    toast.success('Login successfull');
+
+                    // update something in db here
+                }
+            })
+            .catch(error => {
+                toast.error(error.message);
+            })
+    }
 
     return (
         <div className='py-10 flex flex-col lg:flex-row items-center justify-center '>
@@ -32,7 +68,7 @@ const Login = () => {
             </div>
 
             <div className="flex-1">
-                <form onSubmit={handleLogin} className="relative flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5">
+                <form onSubmit={handleLogin} className="relative  flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5">
 
                     {/* heading */}
                     <div className="relative mx-4 -mt-6 mb-4 grid h-16 md:h-28 place-items-center overflow-hidden rounded-xl bg-sky-500 bg-clip-border text-white shadow-lg shadow-gray-300">
@@ -58,9 +94,9 @@ const Login = () => {
                         {/* password */}
                         <div className="relative h-11 w-full min-w-[200px]">
                             {
-                                showPaas ? <AiFillEyeInvisible onClick={handleTogglePass} className="absolute right-2 text-xl top-3 cursor-pointer " />
+                                showPaas ? <AiFillEyeInvisible onClick={handleTogglePass} className="absolute right-2 text-xl top-3 cursor-pointer text-sky-500 " />
                                     :
-                                    <AiFillEye onClick={handleTogglePass} className="absolute right-2 text-xl top-3 cursor-pointer " />
+                                    <AiFillEye onClick={handleTogglePass} className="absolute right-2 text-xl top-3 cursor-pointer text-sky-500 " />
                             }
                             <input
                                 required
@@ -100,11 +136,11 @@ const Login = () => {
                 <div className="flex w-[90vw] md:w-[60vw] lg:w-[40vw] border flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5 mt-5 2xl:w-[25vw]">
                     <p className="text-center font-bold underline my-2">or</p>
                     <div className="w-full flex justify-center">
-                        <button className="mt-2 btn hover:bg-black rounded-md w-[90%] bg-sky-500 text-white ">Login with Google<FcGoogle className="text-2xl" /></button>
+                        <button onClick={() => handleAdditional(googleLogin)} className="mt-2 btn hover:bg-black rounded-md w-[90%] bg-sky-500 text-white ">Login with Google<FcGoogle className="text-2xl" /></button>
 
                     </div>
                     <div className="w-full flex justify-center">
-                        <button className="mt-2 btn hover:bg-black rounded-md w-[90%] bg-sky-500 text-white ">Login with GitHub<BsGithub className="text-2xl" /></button>
+                        <button onClick={() => handleAdditional(gitHubLogin)} className="mt-2 btn hover:bg-black rounded-md w-[90%] bg-sky-500 text-white ">Login with GitHub<BsGithub className="text-2xl" /></button>
                     </div>
                 </div>
             </div>

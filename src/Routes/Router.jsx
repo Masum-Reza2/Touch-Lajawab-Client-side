@@ -7,6 +7,10 @@ import Blog from "../Pages/Blog/Blog"
 import Login from "../Pages/Login/Login"
 import Register from "../Pages/Register/Register"
 import Users from "../Pages/Users/Users"
+import AddAfood from "../Pages/AddAfood/AddAfood"
+import MyAddedFoods from "../Pages/MyAddedFoods/MyAddedFoods"
+import MyOrderedFoods from "../Pages/MyOrderedFoods/MyOrderedFoods"
+
 
 const Router = createBrowserRouter([
     {
@@ -20,6 +24,11 @@ const Router = createBrowserRouter([
             { path: '/users', element: <Users /> },
             { path: '/login', element: <Login /> },
             { path: '/register', element: <Register /> },
+
+            // CRUD pages
+            { path: '/addAfood', element: <AddAfood /> },
+            { path: '/myAddedFoods', element: <MyAddedFoods /> },
+            { path: '/myOrderedFoods', element: <MyOrderedFoods /> },
         ]
     }
 ])
