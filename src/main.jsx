@@ -4,11 +4,22 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import Router from './Routes/Router.jsx'
 import ControlRoom from './ControlRoom/ControlRoom.jsx'
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient();
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ControlRoom>
-      <RouterProvider router={Router} />
-    </ControlRoom>
+
+    <QueryClientProvider client={queryClient}>
+      <ControlRoom>
+        <RouterProvider router={Router} />
+      </ControlRoom>
+    </QueryClientProvider>
+
   </React.StrictMode>,
 )
