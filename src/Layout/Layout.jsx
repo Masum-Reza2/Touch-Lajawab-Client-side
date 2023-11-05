@@ -1,15 +1,28 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import Header from "../Components/Header/Header";
+import Spinner from "../Components/Spinner/Spinner";
+import { useEffect } from "react";
 
 const Layout = () => {
+    const navigation = useNavigation();
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        document.title = `Touch Lajawab${pathname === '/' ? '-Home' : pathname.replace('/', '-')}`
+    }, [pathname])
 
     return (
         <div>
             <Header />
-            <div className="min-h-[90vh]">
-                <Outlet />
-            </div>
-            footer here
+            {
+                navigation.state === "loading" ?
+                    <Spinner />
+                    :
+                    <div className="min-h-[90vh]">
+                        <Outlet />
+                    </div>
+            }
+
         </div>
     )
 }
