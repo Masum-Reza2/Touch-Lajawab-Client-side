@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
+import Header from "../Components/Header/Header";
 
 const Layout = () => {
 
     return (
         <div>
-            header here
+            <Header />
             <div className="min-h-[90vh]">
                 <Outlet />
             </div>
