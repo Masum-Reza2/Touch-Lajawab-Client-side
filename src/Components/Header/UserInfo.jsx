@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import defaultProfile from '../../assets/icons/defaultProfile.jpg'
 const UserInfo = () => {
-    const user = true;
+    const user = false;
     return (
         <>
             <div className="flex-1 px-2 mx-2 justify-end lg:justify-center translate-y-1">
@@ -16,15 +16,12 @@ const UserInfo = () => {
                                     </div>
                                 </label>
 
-                                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <ul tabIndex={0} className="mt-3 z-50 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                                     <li className='lg:hidden font-bold'><a>Salimullah</a></li>
-                                    <li>
-                                        <a className="justify-between">
-                                            Profile
-                                            <span className="badge">New</span>
-                                        </a>
-                                    </li>
-                                    <li><a>Settings</a></li>
+
+                                    <li><a>My added food items</a></li>
+                                    <li><a>Add a food item</a></li>
+                                    <li><a>My ordered food items</a></li>
                                     <li><a>Logout</a></li>
                                 </ul>
                             </div>

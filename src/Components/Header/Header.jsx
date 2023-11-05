@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import Hamburger from "./Hamburger";
 
 const Header = () => {
+
     const navLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allfood'}>All food items</NavLink></li>
@@ -21,7 +22,7 @@ const Header = () => {
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col">
                 {/* Navbar */}
-                <div className="w-full navbar bg-base-300">
+                <div className="w-full navbar bg-sky-300">
 
                     <Hamburger />
                     <Logo logo={logo} />

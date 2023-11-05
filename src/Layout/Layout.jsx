@@ -2,6 +2,7 @@ import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import Spinner from "../Components/Spinner/Spinner";
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 
 const Layout = () => {
     const navigation = useNavigation();
@@ -13,6 +14,9 @@ const Layout = () => {
 
     return (
         <div>
+            {/* package items */}
+            <Toaster />
+
             <Header />
             {
                 navigation.state === "loading" ?
