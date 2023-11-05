@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import auth from "../ConfigFiles/firebase.config";
+import useSecureAxios from "../Hooks/useSecureAxios";
 
 export const GlobalContext = createContext();
 
@@ -9,6 +10,7 @@ const ControlRoom = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const secureAxios = useSecureAxios();
 
     // create user
     const createUser = (email, password) => {
@@ -53,6 +55,28 @@ const ControlRoom = ({ children }) => {
             setUser(currentUser);
             console.log('current user is', currentUser);
             setLoading(false);
+
+            // set and clear token from cookie while user login and logout
+            const jwtUser = { email: currentUser?.email || user?.email }
+
+            if (currentUser) {
+                secureAxios.post('/jwt', jwtUser)
+                    .then(result => {
+                        // console.log(result.data)
+                    })
+                    .catch(error => {
+                        // console.log(error.message)
+                    })
+            }
+            else {
+                secureAxios.post('/logout', jwtUser)
+                    .then(result => {
+                        // console.log(result.data)
+                    })
+                    .catch(error => {
+                        // console.log(error.message)
+                    })
+            }
         });
         return () => {
             return unsubscribe();

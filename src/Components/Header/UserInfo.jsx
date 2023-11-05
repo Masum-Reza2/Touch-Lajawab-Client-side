@@ -17,11 +17,11 @@ const UserInfo = () => {
     }
     return (
         <>
-            <div className="flex-1 px-2 mx-2 justify-end lg:justify-center translate-y-1">
+            <div className="flex-1 px-2 mx-2 justify-end lg:justify-center translate-y-1 z-50">
 
                 {
                     user ?
-                        <div className='flex items-center gap-2'>
+                        <div className='flex items-center gap-2 '>
                             <div className="dropdown dropdown-end">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                                     <div className="rounded-full ">
@@ -41,7 +41,7 @@ const UserInfo = () => {
                                     <Link to={'addAfood'}>
                                         <li><p>Add a food item</p></li>
                                     </Link>
-                                    <li className='font-bold' onClick={handleLogOut}><p>Logout</p></li>
+                                    <li className='font-extrabold' onClick={handleLogOut}><p>Logout</p></li>
 
                                 </ul>
                             </div>
