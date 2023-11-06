@@ -11,7 +11,7 @@ import AddAfood from "../Pages/AddAfood/AddAfood"
 import MyAddedFoods from "../Pages/MyAddedFoods/MyAddedFoods"
 import MyOrderedFoods from "../Pages/MyOrderedFoods/MyOrderedFoods"
 import PrivateRoute from "../PrivateRoute/PrivateRoute"
-
+import UpdateProduct from "../Components/UpdateProduct/UpdateProduct"
 
 const Router = createBrowserRouter([
     {
@@ -28,8 +28,12 @@ const Router = createBrowserRouter([
 
             // CRUD pages
             { path: '/addAfood', element: <PrivateRoute><AddAfood /></PrivateRoute> },
-            { path: '/myAddedFoods', element: <MyAddedFoods /> },
-            { path: '/myOrderedFoods', element: <MyOrderedFoods /> },
+            { path: '/myAddedFoods', element: <PrivateRoute><MyAddedFoods /></PrivateRoute> },
+            { path: '/myOrderedFoods', element: <PrivateRoute><MyOrderedFoods /></PrivateRoute> },
+            {
+                path: '/update/:id', element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/allFoods/${params.id}`)
+            }
         ]
     }
 ])

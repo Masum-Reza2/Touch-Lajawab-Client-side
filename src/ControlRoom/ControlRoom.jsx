@@ -87,6 +87,7 @@ const ControlRoom = ({ children }) => {
     const globalInfo = {
         user,
         loading,
+        setLoading,
         createUser,
         loginUser,
         googleLogin,
