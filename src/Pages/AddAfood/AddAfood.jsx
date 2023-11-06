@@ -37,7 +37,7 @@ const AddAfood = () => {
                     toast.success(`Food item ${foodName} added successfully!`)
                 }
             })
-            .catch(error => toast.error(error.message))
+            .catch(error => toast.error('Oops something went wrong'))
     }
 
 

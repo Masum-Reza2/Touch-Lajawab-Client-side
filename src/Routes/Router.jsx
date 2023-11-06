@@ -10,6 +10,7 @@ import Users from "../Pages/Users/Users"
 import AddAfood from "../Pages/AddAfood/AddAfood"
 import MyAddedFoods from "../Pages/MyAddedFoods/MyAddedFoods"
 import MyOrderedFoods from "../Pages/MyOrderedFoods/MyOrderedFoods"
+import PrivateRoute from "../PrivateRoute/PrivateRoute"
 
 
 const Router = createBrowserRouter([
@@ -26,7 +27,7 @@ const Router = createBrowserRouter([
             { path: '/register', element: <Register /> },
 
             // CRUD pages
-            { path: '/addAfood', element: <AddAfood /> },
+            { path: '/addAfood', element: <PrivateRoute><AddAfood /></PrivateRoute> },
             { path: '/myAddedFoods', element: <MyAddedFoods /> },
             { path: '/myOrderedFoods', element: <MyOrderedFoods /> },
         ]
