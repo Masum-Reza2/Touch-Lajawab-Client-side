@@ -38,8 +38,6 @@ const AllFoodItems = () => {
         }
     }
 
-    console.log(currentPage)
-
     useEffect(() => {
         secureAxios.get(`/allFoods?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => {
@@ -59,7 +57,9 @@ const AllFoodItems = () => {
 
     return (
         <div className=" py-2 lg:py-3">
-            <h1 className="text-center font-bold text-2xl">Showing {allFoods.length} out of {count}</h1>
+            <h1 className="text-center font-bold text-2xl">Try to add search functionality here</h1>
+            <h1 className="text-center font-bold text-2xl">Show a banner here</h1>
+            <h1 className="text-center font-bold text-2xl">Showing {allFoods.length} out of {count} food items</h1>
             <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                     allFoods.map(food => <SingleFood key={food?._id} food={food} />)
@@ -90,6 +90,7 @@ const AllFoodItems = () => {
                     <option value="15">15</option>
                 </select>
             </div>
+            <h1 className="text-center font-bold text-2xl">Footer here</h1>
         </div>
     )
 }
