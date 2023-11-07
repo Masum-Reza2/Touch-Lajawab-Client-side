@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 
 const SingleFood = ({ food }) => {
+    console.log(food)
 
-    const { foodName, img, foodCategory, quantity, price, shortDesc, _id } = food;
+    const { foodName, img, foodCategory, quantity, price, shortDesc, _id, soldCount } = food;
 
     return (
         <div className="relative flex flex-col text-gray-700 bg-white shadow-md shadow-sky-900 rounded-xl bg-clip-border">
@@ -26,6 +27,9 @@ const SingleFood = ({ food }) => {
                 <div className="flex flex-col justify-between mb-2">
                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
                         <span>Category</span> : {foodCategory}
+                    </p>
+                    <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                        <span>Sold</span> : {soldCount}
                     </p>
                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
                         <span>Available Quantity</span> : {quantity}

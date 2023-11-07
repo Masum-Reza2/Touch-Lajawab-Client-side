@@ -14,59 +14,8 @@ const ConfirmOrder = () => {
     let year = new Date().getFullYear();
     let currentDay = `${date}/${month}/${year}`
 
-    const { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime, _id } = currentFood;
+    const { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime, _id, soldCount } = currentFood;
 
-
-    // const handleUpdateProduct = e => {
-    //     e.preventDefault();
-    //     const form = e.target;
-    //     const foodName = form.foodName.value;
-    //     const img = form.foodImg.value;
-    //     const foodCategory = form.foodCategory.value;
-    //     const quantity = form.quantity.value;
-    //     const price = form.price.value;
-    //     const foodOrigin = form.foodOrigin.value;
-    //     const ownerName = form.ownerName.value;
-    //     const ownerEmail = form.ownerEmail.value;
-    //     const shortDesc = form.shortDesc.value;
-    //     const addedTime = form.addedTime.value;
-
-    //     const newFood = { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime };
-
-    //     // sending to db
-    //     Swal.fire({
-    //         title: 'Are you sure?',
-    //         text: `You are going to update ${foodName}`,
-    //         icon: 'warning',
-    //         showCancelButton: true,
-    //         confirmButtonColor: '#3085d6',
-    //         cancelButtonColor: '#d33',
-    //         confirmButtonText: 'Yes, Update it!'
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             secureAxios.put(`/allFoods/${_id}?email=${user?.email}`, newFood)
-    //                 .then(res => {
-    //                     if (res?.data?.modifiedCount) {
-    //                         Swal.fire(
-    //                             'Updated!',
-    //                             `${foodName} has been Updated.`,
-    //                             'success'
-    //                         )
-    //                         navigate('/myAddedFoods');
-    //                     }
-    //                 })
-    //                 .catch(error => console.log(error.message))
-    //         }
-    //         else {
-    //             Swal.fire(
-    //                 'Cancelled!',
-    //                 'You cancelled the update.',
-    //                 'success'
-    //             )
-    //         }
-    //     })
-
-    // }
 
     const handleConfirmOrder = e => {
         e.preventDefault();
@@ -77,7 +26,10 @@ const ConfirmOrder = () => {
         const buyerEmail = form?.buyerEmail?.value;
         const buyingDate = form?.buyingDate?.value;
 
+        // update this two in db
         const newQuantity = availableQuantity - orderQuantity;
+        const newSoldCount = orderQuantity + soldCount;
+
 
         // send this to db
         const confirmedFood = {
@@ -119,6 +71,11 @@ const ConfirmOrder = () => {
                 secureAxios.post(`/bookings?email=${user?.email}`, confirmedFood)
                     .then(res => {
                         if (res.data.insertedId) {
+
+                            // update soldCount in db silently
+                            secureAxios.put(`/updateSoldCount/${_id}?email=${user?.email}`, { newSoldCount })
+                                .then(res => console.log(res.data))
+                                .catch(error => console.log(error.message))
 
                             // update quantity in db silently
                             secureAxios.put(`/quantity/${_id}?email=${user?.email}`, { newQuantity })
