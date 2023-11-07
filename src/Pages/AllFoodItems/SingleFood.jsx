@@ -25,10 +25,10 @@ const SingleFood = ({ food }) => {
                 </div>
                 <div className="flex flex-col justify-between mb-2">
                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-                        <span className='underline'>Category</span> : {foodCategory}
+                        <span>Category</span> : {foodCategory}
                     </p>
                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-blue-gray-900">
-                        <span className='underline'>Available Quantity</span> : {quantity}
+                        <span>Available Quantity</span> : {quantity}
                     </p>
                 </div>
                 <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">

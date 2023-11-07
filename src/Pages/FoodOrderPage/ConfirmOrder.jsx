@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import useGlobal from "../../Hooks/useGlobal";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 
-const UpdateProduct = () => {
+const ConfirmOrder = () => {
     const { user } = useGlobal();
     const currentFood = useLoaderData();
     const secureAxios = useSecureAxios();
@@ -121,7 +121,7 @@ const UpdateProduct = () => {
                         if (res.data.insertedId) {
 
                             // update quantity in db silently
-                            secureAxios.put(`/quantity/${_id}`, { newQuantity })
+                            secureAxios.put(`/quantity/${_id}?email=${user?.email}`, { newQuantity })
                                 .then(res => console.log(res.data))
                                 .catch(error => console.log(error.message))
 
@@ -211,4 +211,4 @@ const UpdateProduct = () => {
     )
 }
 
-export default UpdateProduct
+export default ConfirmOrder

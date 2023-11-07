@@ -68,7 +68,7 @@ const OrderedItems = ({ card, refetch, index }) => {
             <td>{addedTime}</td>
             <td>{price}</td>
             <td>{ownerName}</td>
-            <td>{orderQuantity} times</td>
+            <td>{orderQuantity}</td>
             <th>
                 <button onClick={handleDelete} className="btn-xs hover:-translate-y-[0.10rem] active:translate-y-[0.10rem]">
                     <AiOutlineDelete className="text-xl -translate-y-[0.10rem] text-gray-500" />
