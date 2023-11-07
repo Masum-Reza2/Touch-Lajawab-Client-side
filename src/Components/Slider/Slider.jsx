@@ -3,8 +3,10 @@ import slider2 from '../../assets/bannerSlider/slider2.jpg'
 import slider3 from '../../assets/bannerSlider/slider3.jpg'
 import slider4 from '../../assets/bannerSlider/slider4.jpg'
 import SliderHeader from './SliderHeader'
+import PropTypes from 'prop-types';
 
-const Slider = () => {
+
+const Slider = ({ heading, description }) => {
 
     return (
         <div>
@@ -16,7 +18,7 @@ const Slider = () => {
                         <a href="#slide4" className="btn btn-circle btn-sm md:btn-md">❮</a>
                         <a href="#slide2" className="btn btn-circle btn-sm md:btn-md">❯</a>
                     </div>
-                    <SliderHeader />
+                    <SliderHeader heading={heading} description={description} />
                 </div>
 
                 <div id="slide2" className="carousel-item relative w-full md:h-[70vh]">
@@ -25,7 +27,7 @@ const Slider = () => {
                         <a href="#slide1" className="btn btn-circle btn-sm md:btn-md ">❮</a>
                         <a href="#slide3" className="btn btn-circle btn-sm md:btn-md ">❯</a>
                     </div>
-                    <SliderHeader />
+                    <SliderHeader heading={heading} description={description} />
                 </div>
 
                 <div id="slide3" className="carousel-item relative w-full md:h-[70vh]">
@@ -34,7 +36,7 @@ const Slider = () => {
                         <a href="#slide2" className="btn btn-circle btn-sm md:btn-md ">❮</a>
                         <a href="#slide4" className="btn btn-circle btn-sm md:btn-md ">❯</a>
                     </div>
-                    <SliderHeader />
+                    <SliderHeader heading={heading} description={description} />
                 </div>
 
                 <div id="slide4" className="carousel-item relative w-full md:h-[70vh]">
@@ -43,11 +45,15 @@ const Slider = () => {
                         <a href="#slide3" className="btn btn-circle btn-sm md:btn-md ">❮</a>
                         <a href="#slide1" className="btn btn-circle btn-sm md:btn-md ">❯</a>
                     </div>
-                    <SliderHeader />
+                    <SliderHeader heading={heading} description={description} />
                 </div>
             </div>
         </div>
     )
 }
 
+Slider.propTypes = {
+    heading: PropTypes.string,
+    description: PropTypes.string,
+}
 export default Slider

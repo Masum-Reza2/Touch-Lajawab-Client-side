@@ -13,7 +13,7 @@ const Layout = () => {
     }, [pathname])
 
     return (
-        <div>
+        <div className="scroll-smooth">
             {/* package items */}
             <Toaster />
 

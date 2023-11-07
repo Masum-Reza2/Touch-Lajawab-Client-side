@@ -11,7 +11,7 @@ const Header = () => {
     const navLinks = <>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allfood'}>All food items</NavLink></li>
-        <li><NavLink to={'/blogs'}>Blog</NavLink></li>
+        <li><NavLink to={'/blogs'}>Blogs</NavLink></li>
         <li><NavLink to={'/users'}>Users</NavLink></li>
         <li><NavLink to={'/login'}>Login</NavLink></li>
         <li><NavLink to={'/register'}>Register</NavLink></li>
