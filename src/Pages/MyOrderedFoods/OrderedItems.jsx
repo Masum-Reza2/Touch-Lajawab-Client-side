@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import Swal from "sweetalert2";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 import toast from "react-hot-toast";
+import useGlobal from "../../Hooks/useGlobal";
 
 const OrderedItems = ({ card, refetch, index }) => {
-
+    const { user } = useGlobal();
     const { foodName, img, price, ownerName, addedTime, _id } = card;
     const secureAxios = useSecureAxios();
 
@@ -21,7 +22,7 @@ const OrderedItems = ({ card, refetch, index }) => {
         }).then((result) => {
             if (result.isConfirmed) {
                 //  db activities here
-                secureAxios.delete(`/bookings/${_id}`)
+                secureAxios.delete(`/bookings/${_id}?email=${user?.email}`)
                     .then(res => {
                         if (res.data.deletedCount) {
                             Swal.fire(
