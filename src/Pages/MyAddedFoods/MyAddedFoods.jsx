@@ -26,7 +26,7 @@ const MyAddedFoods = () => {
 
     return (
         <div className="py-5">
-            <h1 className="text-center font-bold text-lg md:text-xl">My added food items : {specificData.length} </h1>
+            <h1 className="text-center font-bold text-lg md:text-xl">Your added food items : {specificData.length} </h1>
             <div className="overflow-x-auto py-5">
                 <table className="table">
                     {/* head */}

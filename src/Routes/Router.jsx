@@ -44,7 +44,7 @@ const Router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/allFoods/${params.id}`)
             },
             {
-                path: '/confirmOrder/:id', element: <ConfirmOrder />,
+                path: '/confirmOrder/:id', element: <PrivateRoute><ConfirmOrder /></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/allFoods/${params.id}`)
             }
         ]

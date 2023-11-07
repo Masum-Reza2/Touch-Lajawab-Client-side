@@ -1,10 +1,13 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useGlobal from "../../Hooks/useGlobal";
+import useSecureAxios from "../../Hooks/useSecureAxios";
 
 const UpdateProduct = () => {
     const { user } = useGlobal();
     const currentFood = useLoaderData();
+    const secureAxios = useSecureAxios();
+    const navigate = useNavigate();
 
     let date = new Date().getDate();
     let month = new Date().getMonth();
@@ -110,14 +113,27 @@ const UpdateProduct = () => {
             confirmButtonText: 'Yes, order it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Swal.fire(
-                //     'Deleted!',
-                //     'Your file has been deleted.',
-                //     'success'
-                // )
-
                 //  database activities here
-                console.log(confirmedFood)
+                // console.log(confirmedFood)
+                secureAxios.post(`/bookings?email=${user?.email}`, confirmedFood)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            Swal.fire(
+                                'Completed!',
+                                `Your order for ${foodName} has been completed!`,
+                                'success'
+                            )
+                            form.reset();
+                            navigate('/myOrderedFoods');
+                        }
+                    })
+                    .catch(error => {
+                        Swal.fire(
+                            'Oops!',
+                            `Something went wrong`,
+                            'error'
+                        )
+                    })
             }
             else {
                 Swal.fire(
