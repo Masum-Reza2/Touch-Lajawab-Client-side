@@ -85,7 +85,7 @@ const AllFoodItems = () => {
                 </button>
 
                 <select id="chooseItem" className="bg-orange-200 font-bold rounded-md py-3 cursor-pointer" value={itemsPerPage} onChange={handleItemsPerPage}>
-                    <option value="5">9</option>
+                    <option value="9">9</option>
                     <option value="10">10</option>
                     <option value="15">15</option>
                 </select>
