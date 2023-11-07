@@ -1,7 +1,9 @@
+import Slider from "../../Components/Slider/Slider"
+
 const Home = () => {
     return (
         <div>
-            <p>show a slider</p>
+            <Slider />
             <p>heading title</p>
             <p>short desc</p>
             <p>button >>> redirect to all food Page</p>
