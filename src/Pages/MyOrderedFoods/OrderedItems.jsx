@@ -7,7 +7,7 @@ import useGlobal from "../../Hooks/useGlobal";
 
 const OrderedItems = ({ card, refetch, index }) => {
     const { user } = useGlobal();
-    const { foodName, img, price, ownerName, addedTime, _id } = card;
+    const { foodName, img, price, ownerName, addedTime, orderQuantity, _id } = card;
     const secureAxios = useSecureAxios();
 
     const handleDelete = () => {
@@ -68,6 +68,7 @@ const OrderedItems = ({ card, refetch, index }) => {
             <td>{addedTime}</td>
             <td>{price}</td>
             <td>{ownerName}</td>
+            <td>{orderQuantity} times</td>
             <th>
                 <button onClick={handleDelete} className="btn-xs hover:-translate-y-[0.10rem] active:translate-y-[0.10rem]">
                     <AiOutlineDelete className="text-xl -translate-y-[0.10rem] text-gray-500" />

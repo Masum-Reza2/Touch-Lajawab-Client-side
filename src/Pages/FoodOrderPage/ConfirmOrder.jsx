@@ -77,6 +77,7 @@ const UpdateProduct = () => {
         const buyerEmail = form?.buyerEmail?.value;
         const buyingDate = form?.buyingDate?.value;
 
+        const newQuantity = availableQuantity - orderQuantity;
 
         // send this to db
         const confirmedFood = {
@@ -118,6 +119,12 @@ const UpdateProduct = () => {
                 secureAxios.post(`/bookings?email=${user?.email}`, confirmedFood)
                     .then(res => {
                         if (res.data.insertedId) {
+
+                            // update quantity in db silently
+                            secureAxios.put(`/quantity/${_id}`, { newQuantity })
+                                .then(res => console.log(res.data))
+                                .catch(error => console.log(error.message))
+
                             Swal.fire(
                                 'Completed!',
                                 `Your order for ${foodName} has been completed!`,

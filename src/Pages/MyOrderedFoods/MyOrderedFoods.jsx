@@ -36,6 +36,7 @@ const MyOrderedFoods = () => {
                             <th>Added time</th>
                             <th>Price</th>
                             <th>Owner</th>
+                            <th>peoples order</th>
                             <th>Actions</th>
                             <th></th>
                         </tr>
