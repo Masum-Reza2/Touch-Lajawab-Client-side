@@ -1,8 +1,13 @@
+import Footer from "../../Components/Footer/Footer"
+
 const Blog = () => {
     return (
-        <div>
-            blog
-        </div>
+        <>
+            <div className="min-h-screen">
+                blog
+            </div>
+            <Footer />
+        </>
     )
 }
 

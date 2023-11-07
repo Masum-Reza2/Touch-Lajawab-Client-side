@@ -3,6 +3,7 @@ import useSecureAxios from "../../Hooks/useSecureAxios"
 import SingleFood from "./SingleFood";
 import { useLoaderData } from "react-router-dom";
 import { BiSolidSkipNextCircle } from 'react-icons/bi';
+import Footer from "../../Components/Footer/Footer";
 
 
 const AllFoodItems = () => {
@@ -56,42 +57,44 @@ const AllFoodItems = () => {
     // const allFoods = data?.data;
 
     return (
-        <div className=" py-2 lg:py-3">
-            <h1 className="text-center font-bold text-2xl">Try to add search functionality here</h1>
-            <h1 className="text-center font-bold text-2xl">Show a banner here</h1>
-            <h1 className="text-center font-bold text-2xl">Showing {allFoods.length} out of {count} food items</h1>
-            <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {
-                    allFoods.map(food => <SingleFood key={food?._id} food={food} />)
-                }
-            </div>
+        <>
+            <div className=" py-2 lg:py-3">
+                <h1 className="text-center font-bold text-2xl">Try to add search functionality here</h1>
+                <h1 className="text-center font-bold text-2xl">Show a banner here</h1>
+                <h1 className="text-center font-bold text-2xl">Showing {allFoods.length} out of {count} food items</h1>
+                <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {
+                        allFoods.map(food => <SingleFood key={food?._id} food={food} />)
+                    }
+                </div>
 
-            <div className="text-center py-5 space-x-5">
-                <p className="pb-2 font-bold text-lg">Current Page : {currentPage}</p>
-                <button onClick={handlePrev} className="btn translate-y-1">
-                    <BiSolidSkipNextCircle className="text-xl rotate-180" />
-                </button>
-                {
-                    pagination?.map((page, index) => <button
-                        key={index}
-                        className={`btn btn-outline ${currentPage === (page + 1) ? 'bg-sky-400 text-white font-bold' : ''}`}
-                        onClick={() => setCurrentPage(page + 1)}
-                    >
-                        {page + 1}
-                    </button>)
-                }
-                <button onClick={handleNext} className="btn translate-y-1">
-                    <BiSolidSkipNextCircle className="text-xl" />
-                </button>
+                <div className="text-center py-5 space-x-5">
+                    <p className="pb-2 font-bold text-lg">Current Page : {currentPage}</p>
+                    <button onClick={handlePrev} className="btn translate-y-1">
+                        <BiSolidSkipNextCircle className="text-xl rotate-180" />
+                    </button>
+                    {
+                        pagination?.map((page, index) => <button
+                            key={index}
+                            className={`btn btn-outline ${currentPage === (page + 1) ? 'bg-sky-400 text-white font-bold' : ''}`}
+                            onClick={() => setCurrentPage(page + 1)}
+                        >
+                            {page + 1}
+                        </button>)
+                    }
+                    <button onClick={handleNext} className="btn translate-y-1">
+                        <BiSolidSkipNextCircle className="text-xl" />
+                    </button>
 
-                <select id="chooseItem" className="bg-orange-200 font-bold rounded-md py-3 cursor-pointer" value={itemsPerPage} onChange={handleItemsPerPage}>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                </select>
+                    <select id="chooseItem" className="bg-orange-200 font-bold rounded-md py-3 cursor-pointer" value={itemsPerPage} onChange={handleItemsPerPage}>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                    </select>
+                </div>
             </div>
-            <h1 className="text-center font-bold text-2xl">Footer here</h1>
-        </div>
+            <Footer />
+        </>
     )
 }
 
