@@ -59,8 +59,9 @@ const AllFoodItems = () => {
             <div className=" py-2 lg:py-3">
 
                 {/* search functionality */}
-                <div className="flex items-center gap-2 justify-center py-5">
-                    <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Search by name,category or owner" className="input input-bordered input-info w-full max-w-xs" />
+                <div className="flex items-center gap-2 justify-center py-5 relative w-fit mx-auto">
+                    <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Search by name,category or owner" className="input w-72 max-w-xs shadow-md shadow-sky-900 focus:outline-none" />
+                    <BsSearch className="absolute right-1 text-gray-500" />
                 </div>
 
 
