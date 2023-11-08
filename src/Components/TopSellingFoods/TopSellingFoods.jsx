@@ -16,14 +16,14 @@ const TopSellingFoods = () => {
     if (error) return 'An error has occurred: ' + error.message
 
     return (
-        <div className="w-[90%] mx-auto">
+        <div className="md:w-[90%] mx-auto">
 
             <div className="text-center text-lg md:text-2xl font-bold py-3 mb-3 rounded-t-3xl mt-5 bg-sky-200 flex items-center justify-center gap-2 ">
                 <h1>Top selling food items</h1>
                 <img className="w-[30px] rounded-full" src={shef} alt="" />
             </div>
 
-            <div className="grid gap-5 px-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-1">
+            <div className="grid gap-5 px-5 md:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 py-1">
                 {
                     data?.map(food => <TopFoodCard key={food?._id} food={food} />)
                 }

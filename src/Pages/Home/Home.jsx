@@ -12,7 +12,6 @@ const Home = () => {
             <TopSellingFoods />
             <CrewAndChefs />
             <WhyUs />
-            <p>+1 more extra</p>
             <Footer />
         </div>
     )
