@@ -5,10 +5,12 @@ import Navbar from "./Navbar";
 import UserInfo from "./UserInfo";
 import Logo from "./Logo";
 import Hamburger from "./Hamburger";
+import Switch from "../Switch/Switch";
 
 const Header = () => {
 
     const navLinks = <>
+        <div className="text-center lg:mr-10"><Switch /></div>
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allfood'}>All food items</NavLink></li>
         <li><NavLink to={'/blogs'}>Blogs</NavLink></li>

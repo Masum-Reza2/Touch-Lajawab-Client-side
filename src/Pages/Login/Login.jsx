@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import { FcGoogle } from 'react-icons/fc';
 import { BsGithub } from 'react-icons/bs';
-import loginImg from '../../assets/images/loginImg.jpg'
+import loginImg from '../../assets/images/loginImg.png'
 import useGlobal from "../../Hooks/useGlobal";
 import toast from "react-hot-toast";
 import useSecureAxios from "../../Hooks/useSecureAxios";

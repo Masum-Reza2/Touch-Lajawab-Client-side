@@ -7,9 +7,11 @@ import { Toaster } from "react-hot-toast";
 // AOS 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import useGlobal from "../Hooks/useGlobal";
 AOS.init();
 
 const Layout = () => {
+    const { mode } = useGlobal();
     const navigation = useNavigation();
     const { pathname } = useLocation();
 
@@ -18,7 +20,7 @@ const Layout = () => {
     }, [pathname])
 
     return (
-        <div className="scroll-smooth">
+        <div className={`scroll-smooth ${mode && 'bg-sky-900'}`}>
             {/* package items */}
             <Toaster />
 

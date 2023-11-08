@@ -12,6 +12,11 @@ const ControlRoom = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const secureAxios = useSecureAxios();
 
+    const [mode, setMode] = useState(false);
+    const handleMode = () => {
+        setMode(!mode);
+    }
+
     // create user
     const createUser = (email, password) => {
         setLoading(true);
@@ -94,6 +99,8 @@ const ControlRoom = ({ children }) => {
         gitHubLogin,
         logOutUser,
         updateUserProfile,
+        mode,
+        handleMode
     }
     return (
         <GlobalContext.Provider value={globalInfo}>

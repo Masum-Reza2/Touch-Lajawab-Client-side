@@ -3,7 +3,7 @@ import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
 import { useState } from "react";
 import toast from 'react-hot-toast';
 /* eslint-disable react/no-unescaped-entities */
-import registerImg from '../../assets/images/registerImg.jpg'
+import registerImg from '../../assets/images/registerImg.png'
 import useGlobal from "../../Hooks/useGlobal";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 
