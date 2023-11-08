@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 const TopFoodCard = ({ food }) => {
-    const { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime, soldCount, _id } = food;
+    const { foodName, img, foodCategory, price, shortDesc, _id } = food;
     return (
         <div className="card bg-base-100 shadow-xl image-full">
             <figure><img src={img} alt={`image of ${foodName}`} /></figure>
