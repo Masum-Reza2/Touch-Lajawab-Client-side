@@ -7,7 +7,9 @@ const SingleFood = ({ food }) => {
     const { foodName, img, foodCategory, quantity, price, shortDesc, _id, soldCount } = food;
 
     return (
-        <div className="relative flex flex-col text-gray-700 bg-white shadow-md shadow-sky-900 rounded-xl bg-clip-border">
+        <div className="relative flex flex-col text-gray-700 bg-white shadow-md shadow-sky-900 rounded-xl bg-clip-border"
+            data-aos="zoom-in"
+        >
             <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-56 lg:h-64 rounded-xl bg-clip-border">
                 <img
                     src={img}
