@@ -24,9 +24,9 @@ const Blog = () => {
                 <Slider heading={'Blogs'} description={'Delve into the Flavorful World of In Touch Lajawab! Our blog is your passport to a gastronomic journey, culinary inspirations, and insights into the art of creating exquisite flavors. '} />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 py-10" >
                 {
-                    blogImages?.map((item, index) => <div className="relative" key={index}>
+                    blogImages?.map((item, index) => <div className="relative" key={index} data-aos="zoom-in">
 
                         <div className="absolute z-10 h-20 w-20 bg-sky-500 right-2 top-2 text-white flex flex-col font-bold flex-none items-center justify-center rounded-md">
                             <p className="text-5xl">{index + 10}</p>
@@ -43,7 +43,7 @@ const Blog = () => {
             </div>
 
             {/* question answering */}
-            <div className="py-10 px-5 space-y-2 ">
+            <div className="py-10 px-5 space-y-2">
                 <div className="flex items-center gap-3 justify-center">
                     <FaHandPointRight className="text-3xl -translate-y-5 text-green-600" />
                     <h1 className="text-2xl mb-10 font-bold text-green-600">Examiner's asked questions...</h1>
