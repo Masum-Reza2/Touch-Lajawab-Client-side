@@ -16,10 +16,10 @@ const TopFoodCard = ({ food }) => {
 
                 <div className="card-actions justify-end">
                     <Link to={`/orderFood/${_id}`}>
-                        <button className="btn btn-sm lg:btn-md bg-purple-300 border-0 text-gray-600">Details</button>
+                        <button className="btn btn-sm lg:btn-md bg-purple-200 border-0 text-gray-600">Details</button>
                     </Link>
                     <Link to={'/allfood'}>
-                        <button className="btn btn-sm lg:btn-md bg-purple-300 border-0 text-gray-600">See all</button>
+                        <button className="btn btn-sm lg:btn-md bg-red-200 border-0 text-gray-600">See all</button>
                     </Link>
                 </div>
             </div>
