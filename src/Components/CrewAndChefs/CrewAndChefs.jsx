@@ -1,5 +1,4 @@
 import Marquee from "react-fast-marquee";
-import 'react-multi-carousel/lib/styles.css';
 
 
 import chef1 from '../../assets/crewandChefImg/img-1.jpg'
@@ -18,7 +17,7 @@ const CrewAndChefs = () => {
     ]
 
     return (
-        <div className='md:w-[90%] mx-auto pt-5'>
+        <div className='md:w-[90%] mx-auto pt-5' data-aos="fade-up-right">
 
             <div className="px-5 md:px-0 grid grid-cols-1 md:grid-cols-2 rounded-lg border-2 md:border-0 md:shadow-md md:shadow-sky-900 ">
                 <div className="order-2 md:order-1">

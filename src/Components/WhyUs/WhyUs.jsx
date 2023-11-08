@@ -1,12 +1,5 @@
 import WhyUsCard from "./WhyUsCard"
 
-
-
-
-
-
-
-
 const whyUsInfo = [
     {
         img: 'https://i.ibb.co/3fp6Q4s/Exclusive-Design-removebg-preview.png',

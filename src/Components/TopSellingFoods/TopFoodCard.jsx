@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 const TopFoodCard = ({ food }) => {
     const { foodName, img, foodCategory, price, shortDesc, _id } = food;
     return (
-        <div className="card bg-base-100 shadow-xl image-full">
+        <div className="card bg-base-100 shadow-xl image-full"
+            data-aos="fade-right"
+        // data-aos-duration="1000"
+        >
             <figure><img src={img} alt={`image of ${foodName}`} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{foodName}</h2>
