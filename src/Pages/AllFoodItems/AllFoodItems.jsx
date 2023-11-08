@@ -5,6 +5,8 @@ import { useLoaderData } from "react-router-dom";
 import { BiSolidSkipNextCircle } from 'react-icons/bi';
 import Footer from "../../Components/Footer/Footer";
 import MarqueeSlider from "../../Components/MarqueeSlider/MarqueeSlider";
+import { BsSearch } from "react-icons/bs";
+import Spinner from "../../Components/Spinner/Spinner";
 
 
 const AllFoodItems = () => {
@@ -12,6 +14,9 @@ const AllFoodItems = () => {
     const [itemsPerPage, setItemsPerpage] = useState(9);
     const [currentPage, setCurrentPage] = useState(1);
     const secureAxios = useSecureAxios();
+
+    // search functionality
+    const [searchText, setSearchText] = useState('');
 
     // pagination
     const { count } = useLoaderData();
@@ -41,24 +46,45 @@ const AllFoodItems = () => {
     }
 
     useEffect(() => {
-        secureAxios.get(`/allFoods?page=${currentPage}&size=${itemsPerPage}`)
+        secureAxios.get(`/allFoods?page=${currentPage}&size=${itemsPerPage}&searchText=${searchText}`)
             .then(res => {
                 setAllFoods(res?.data);
             })
             .catch(error => console.log(error))
-    }, [itemsPerPage, currentPage, secureAxios])
+    }, [itemsPerPage, currentPage, secureAxios, searchText])
 
     return (
         <>
             <MarqueeSlider allFoods={allFoods} />
             <div className=" py-2 lg:py-3">
 
-                <h1 className="text-center font-bold py-2 md:text-xl">Showing {allFoods.length} out of {count} food items.</h1>
-                <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                    {
-                        allFoods.map(food => <SingleFood key={food?._id} food={food} />)
-                    }
+                {/* search functionality */}
+                <div className="flex items-center gap-2 justify-center py-5">
+                    <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Search by name,category or owner" className="input input-bordered input-info w-full max-w-xs" />
                 </div>
+
+
+                {
+                    searchText ?
+                        <h1 className="text-center font-bold py-2 md:text-xl mb-5">Showing {allFoods.length} result{allFoods.length > 1 && `'s`} for {searchText}</h1>
+                        :
+                        <h1 className="text-center font-bold py-2 md:text-xl mb-5">Showing {allFoods.length} out of {count} food items.</h1>
+                }
+
+
+                {
+                    allFoods.length ?
+                        <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            {
+                                allFoods.map(food => <SingleFood key={food?._id} food={food} />)
+                            }
+                        </div>
+                        :
+                        <div className="-translate-y-32 md:-translate-y-40">
+                            <Spinner />
+                        </div>
+                }
+
 
                 <div className="text-center py-5 space-x-5">
                     <p className="pb-2 font-bold text-lg">Current Page : {currentPage}</p>

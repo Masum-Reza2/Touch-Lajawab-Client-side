@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 
 const SingleFood = ({ food }) => {
-    console.log(food)
 
     const { foodName, img, foodCategory, quantity, price, shortDesc, _id, soldCount } = food;
 
