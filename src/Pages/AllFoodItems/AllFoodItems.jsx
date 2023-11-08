@@ -4,6 +4,7 @@ import SingleFood from "./SingleFood";
 import { useLoaderData } from "react-router-dom";
 import { BiSolidSkipNextCircle } from 'react-icons/bi';
 import Footer from "../../Components/Footer/Footer";
+import MarqueeSlider from "../../Components/MarqueeSlider/MarqueeSlider";
 
 
 const AllFoodItems = () => {
@@ -47,21 +48,12 @@ const AllFoodItems = () => {
             .catch(error => console.log(error))
     }, [itemsPerPage, currentPage, secureAxios])
 
-    // const { isPending, error, data } = useQuery({
-    //     queryKey: ['allFoods'],
-    //     queryFn: () =>
-    //         secureAxios.get('/allFoods')
-    // })
-    // if (isPending) return <Spinner />
-    // if (error) return 'An error has occurred: ' + error.message
-    // const allFoods = data?.data;
-
     return (
         <>
+            <MarqueeSlider allFoods={allFoods} />
             <div className=" py-2 lg:py-3">
-                <h1 className="text-center font-bold text-2xl">Try to add search functionality here</h1>
-                <h1 className="text-center font-bold text-2xl">Show a banner here</h1>
-                <h1 className="text-center font-bold text-2xl">Showing {allFoods.length} out of {count} food items</h1>
+
+                <h1 className="text-center font-bold py-2 md:text-xl">Showing {allFoods.length} out of {count} food items.</h1>
                 <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {
                         allFoods.map(food => <SingleFood key={food?._id} food={food} />)
