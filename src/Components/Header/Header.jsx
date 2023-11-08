@@ -12,7 +12,7 @@ const Header = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/allfood'}>All food items</NavLink></li>
         <li><NavLink to={'/blogs'}>Blogs</NavLink></li>
-        <li><NavLink to={'/users'}>Users</NavLink></li>
+        <li><NavLink to={'/dashBoard'}>Dash-Board</NavLink></li>
         <li><NavLink to={'/login'}>Login</NavLink></li>
         <li><NavLink to={'/register'}>Register</NavLink></li>
     </>

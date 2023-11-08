@@ -6,7 +6,6 @@ import Home from "../Pages/Home/Home"
 import Blog from "../Pages/Blog/Blog"
 import Login from "../Pages/Login/Login"
 import Register from "../Pages/Register/Register"
-import Users from "../Pages/Users/Users"
 import AddAfood from "../Pages/AddAfood/AddAfood"
 import MyAddedFoods from "../Pages/MyAddedFoods/MyAddedFoods"
 import MyOrderedFoods from "../Pages/MyOrderedFoods/MyOrderedFoods"
@@ -14,6 +13,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute"
 import UpdateProduct from "../Components/UpdateProduct/UpdateProduct"
 import FoodOrderPage from "../Pages/FoodOrderPage/FoodOrderPage"
 import ConfirmOrder from "../Pages/FoodOrderPage/ConfirmOrder"
+import DashBoard from "../Pages/DashBoard/DashBoard"
 
 const Router = createBrowserRouter([
     {
@@ -27,7 +27,7 @@ const Router = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/foodCount')
             },
             { path: '/blogs', element: <Blog /> },
-            { path: '/users', element: <Users /> },
+            { path: '/dashBoard', element: <DashBoard /> },
             { path: '/login', element: <Login /> },
             { path: '/register', element: <Register /> },
 

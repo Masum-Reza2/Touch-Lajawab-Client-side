@@ -7,6 +7,7 @@ import { BsGithub } from 'react-icons/bs';
 import loginImg from '../../assets/images/loginImg.jpg'
 import useGlobal from "../../Hooks/useGlobal";
 import toast from "react-hot-toast";
+import useSecureAxios from "../../Hooks/useSecureAxios";
 
 
 /* eslint-disable react/no-unescaped-entities */
@@ -15,6 +16,7 @@ const Login = () => {
     const navigate = useNavigate();
     const { state } = useLocation();
     const { loginUser, googleLogin, gitHubLogin } = useGlobal();
+    const secureAxios = useSecureAxios();
 
     const handleTogglePass = () => {
         setShowPaas(!showPaas)
@@ -34,8 +36,6 @@ const Login = () => {
                 if (user) {
                     toast.success('Login successfull!');
                     navigate(state || '/');
-
-                    // update something in db here
                 }
             })
             .catch(error => {
@@ -45,6 +45,7 @@ const Login = () => {
 
     // Additional login
     const handleAdditional = (additional) => {
+
         additional()
             .then(result => {
                 const user = result.user;
@@ -53,6 +54,11 @@ const Login = () => {
                     toast.success('Login successfull');
 
                     // update something in db here
+                    const sendUser = {
+                        name: user?.displayName || 'Not available',
+                        email: user?.email || 'Not available',
+                    }
+                    secureAxios.post(`googleOrGithubUser`, sendUser)
                 }
             })
             .catch(error => {

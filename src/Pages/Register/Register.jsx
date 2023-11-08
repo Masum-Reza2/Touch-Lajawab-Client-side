@@ -5,11 +5,13 @@ import toast from 'react-hot-toast';
 /* eslint-disable react/no-unescaped-entities */
 import registerImg from '../../assets/images/registerImg.jpg'
 import useGlobal from "../../Hooks/useGlobal";
+import useSecureAxios from "../../Hooks/useSecureAxios";
 
 const Register = () => {
     const [showPaas, setShowPaas] = useState(false);
     const { createUser, logOutUser, updateUserProfile } = useGlobal();
     const navigate = useNavigate();
+    const secureAxios = useSecureAxios();
 
     // function for password toggle 
     const handleTogglePass = () => {
@@ -50,6 +52,10 @@ const Register = () => {
                     updateUserProfile(name, photo);
 
                     // send to database here
+                    const emailUser = { name, email };
+                    secureAxios.post(`/emailUser`, emailUser)
+                    // .then(res => console.log(res.data))
+                    // .catch(error => console.log(error.message))
                 }
             })
             .catch(error => {
