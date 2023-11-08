@@ -29,8 +29,9 @@ const AddAfood = () => {
         const ownerEmail = form.ownerEmail.value;
         const shortDesc = form.shortDesc.value;
         const addedTime = form.addedTime.value;
+        const soldCount = 0;
 
-        const newFoodItem = { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime };
+        const newFoodItem = { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime, soldCount };
         // console.log(newFoodItem);
 
         // sending to db
