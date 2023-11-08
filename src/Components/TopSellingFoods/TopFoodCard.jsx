@@ -1,14 +1,26 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 const TopFoodCard = ({ food }) => {
-
+    const { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, ownerEmail, shortDesc, addedTime, soldCount, _id } = food;
     return (
-        <div className="card card-side bg-base-100 shadow-xl">
-            <figure><img src="/images/stock/photo-1635805737707-575885ab0820.jpg" alt="Movie" /></figure>
+        <div className="card bg-base-100 shadow-xl image-full">
+            <figure><img src={img} alt={`image of ${foodName}`} /></figure>
             <div className="card-body">
-                <h2 className="card-title">New movie is released!</h2>
-                <p>Click the button to watch on Jetflix app.</p>
+                <h2 className="card-title">{foodName}</h2>
+                <div>
+                    <p>Food Category : {foodCategory}</p>
+                    <p>Price : ${price}</p>
+                </div>
+
+                <p>{shortDesc.slice(0, 60)}...</p>
+
                 <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Watch</button>
+                    <Link to={`/orderFood/${_id}`}>
+                        <button className="btn btn-sm lg:btn-md bg-purple-300 border-0 text-gray-600">Details</button>
+                    </Link>
+                    <Link to={'/allfood'}>
+                        <button className="btn btn-sm lg:btn-md bg-purple-300 border-0 text-gray-600">See all</button>
+                    </Link>
                 </div>
             </div>
         </div>
