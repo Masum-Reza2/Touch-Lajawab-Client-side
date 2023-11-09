@@ -7,9 +7,11 @@ import Footer from "../../Components/Footer/Footer";
 import MarqueeSlider from "../../Components/MarqueeSlider/MarqueeSlider";
 import { BsSearch } from "react-icons/bs";
 import Spinner from "../../Components/Spinner/Spinner";
+import useGlobal from "../../Hooks/useGlobal";
 
 
 const AllFoodItems = () => {
+    const { mode } = useGlobal();
     const [allFoods, setAllFoods] = useState([]);
     const [itemsPerPage, setItemsPerpage] = useState(9);
     const [currentPage, setCurrentPage] = useState(1);
@@ -67,9 +69,9 @@ const AllFoodItems = () => {
 
                 {
                     searchText ?
-                        <h1 className="text-center font-bold py-2 md:text-xl mb-5">Showing {allFoods.length} result{allFoods.length > 1 && `'s`} for {searchText}</h1>
+                        <h1 className={`text-center font-bold py-2 md:text-xl mb-5 ${mode ? 'text-gray-500' : ''}`}>Showing {allFoods.length} result{allFoods.length > 1 && `'s`} for {searchText}</h1>
                         :
-                        <h1 className="text-center font-bold py-2 md:text-xl mb-5">Showing {allFoods.length} out of {count} food items.</h1>
+                        <h1 className={`text-center font-bold py-2 md:text-xl mb-5 ${mode ? 'text-gray-500' : ''}`}>Showing {allFoods.length} out of {count} food items.</h1>
                 }
 
 

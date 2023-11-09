@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types'; // ES6
 import { Link } from 'react-router-dom';
+import useGlobal from '../../Hooks/useGlobal';
 
 
 const SingleFood = ({ food }) => {
+    const { mode } = useGlobal();
 
     const { foodName, img, foodCategory, quantity, price, shortDesc, _id, soldCount } = food;
 
     return (
-        <div className="relative flex flex-col text-gray-700 bg-white shadow-md shadow-sky-900 rounded-xl bg-clip-border"
+        <div className={`relative flex flex-col   ${mode ? 'bg-black text-gray-400' : 'bg-white text-gray-700'} shadow-md shadow-sky-900 rounded-xl bg-clip-border`}
             data-aos="zoom-in"
         >
             <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-56 lg:h-64 rounded-xl bg-clip-border">
@@ -36,7 +38,7 @@ const SingleFood = ({ food }) => {
                         <span>Available Quantity</span> : {quantity}
                     </p>
                 </div>
-                <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+                <p className={`block font-sans text-sm antialiased font-normal leading-normal  opacity-75 ${mode ? 'text-gray-400' : 'text-gray-700'}`}>
                     {shortDesc.slice(0, 100)}<span className='font-semibold'>...</span>
                 </p>
             </div>
