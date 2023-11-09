@@ -20,7 +20,6 @@ const MyOrderedFoods = () => {
     if (error) return 'An error has occurred: ' + error.message
 
     const userSpecificOrder = data?.data;
-    console.log(userSpecificOrder)
 
 
     return (

@@ -90,14 +90,14 @@ const AllFoodItems = () => {
 
 
                 <div className="text-center py-5 space-x-5">
-                    <p className="pb-2 font-bold text-lg">Current Page : {currentPage}</p>
+                    <p className={`pb-2 font-bold text-lg ${mode ? 'text-gray-400' : ''}`}>Current Page : {currentPage}</p>
                     <button onClick={handlePrev} className="btn translate-y-1">
                         <BiSolidSkipNextCircle className="text-xl rotate-180" />
                     </button>
                     {
                         pagination?.map((page, index) => <button
                             key={index}
-                            className={`btn btn-outline ${currentPage === (page + 1) ? 'bg-sky-400 text-white font-bold' : ''}`}
+                            className={`btn btn-outline ${mode ? 'text-white' : ''} ${currentPage === (page + 1) ? 'bg-sky-400 text-white font-bold' : ''}`}
                             onClick={() => setCurrentPage(page + 1)}
                         >
                             {page + 1}
