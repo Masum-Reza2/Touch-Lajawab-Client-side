@@ -20,7 +20,7 @@ const Layout = () => {
     }, [pathname])
 
     return (
-        <div className={`scroll-smooth ${mode && 'bg-sky-900'}`}>
+        <div className={`scroll-smooth ${mode && 'bg-sky-950'}`}>
             {/* package items */}
             <Toaster />
 

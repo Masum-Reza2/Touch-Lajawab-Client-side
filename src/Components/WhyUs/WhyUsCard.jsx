@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import useGlobal from '../../Hooks/useGlobal';
 
 const WhyUsCard = ({ whyUs }) => {
+    const { mode } = useGlobal();
     const { img, title, desc } = whyUs;
     return (
-        <div className='border flex flex-col items-center text-center h-full w-full rounded-lg shadow-md py-2 transition-all duration-500 cursor-pointer hover:-translate-y-1 shadow-gray-400 bg-sky-100 space-y-2'
+        <div className={`border flex flex-col items-center text-center h-full w-full rounded-lg shadow-md py-2 transition-all duration-500 cursor-pointer hover:-translate-y-1  ${mode ? 'bg-red-100' : 'shadow-gray-400 bg-sky-100'}  space-y-2`}
             data-aos="flip-left"
             data-aos-duration="1000"
         >

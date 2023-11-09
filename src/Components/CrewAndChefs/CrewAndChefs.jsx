@@ -6,8 +6,10 @@ import chef2 from '../../assets/crewandChefImg/img-2.jpg'
 import chef3 from '../../assets/crewandChefImg/img-3.jpg'
 import chef4 from '../../assets/crewandChefImg/img-5.jpg'
 import { FaFeatherAlt } from "react-icons/fa";
+import useGlobal from "../../Hooks/useGlobal";
 
 const CrewAndChefs = () => {
+    const { mode } = useGlobal();
 
     const chefSlider = [
         { img: chef1, name: 'Danni wiyatt', occupation: 'Manager' },
@@ -19,7 +21,7 @@ const CrewAndChefs = () => {
     return (
         <div className='md:w-[90%] mx-auto pt-5' data-aos="fade-up-right">
 
-            <div className="px-5 md:px-0 grid grid-cols-1 md:grid-cols-2 rounded-lg border-2 md:border-0 md:shadow-md md:shadow-sky-900 ">
+            <div className={`px-5 md:px-0 grid grid-cols-1 md:grid-cols-2 rounded-lg border-2 md:border-0 md:shadow-md  ${mode ? 'md:shadow-sky-500 text-gray-500' : 'md:shadow-sky-900'}`}>
                 <div className="order-2 md:order-1">
                     <Marquee speed={30} pauseOnHover className="py-3 cursor-pointer">
                         {

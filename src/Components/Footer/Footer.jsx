@@ -1,9 +1,11 @@
 import { BsFacebook, BsInstagram, BsYoutube } from 'react-icons/bs'
 import logo from '../../assets/icons/Restaurant-icon.png'
 import { AiOutlineTwitter } from 'react-icons/ai'
+import useGlobal from '../../Hooks/useGlobal'
 const Footer = () => {
+    const { mode } = useGlobal();
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <footer className={`footer p-10 bg-base-200 text-base-content ${mode && 'bg-black text-white'}`}>
             <aside>
                 <div className='flex items-center gap-2'>
                     <img className='h-10' src={logo} alt="" />
