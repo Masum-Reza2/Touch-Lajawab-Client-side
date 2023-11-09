@@ -9,7 +9,7 @@ const TopSellingFoods = () => {
     const { isPending, error, data } = useQuery({
         queryKey: ['topFoods'],
         queryFn: () =>
-            fetch('https://restaurant-server-8v6lalu6n-masum-rezas-projects.vercel.app/topFoods',).then(
+            fetch('https://restaurant-server-g5g2jk49t-masum-rezas-projects.vercel.app/topFoods',).then(
                 (res) => res.json(),
             ),
     })
