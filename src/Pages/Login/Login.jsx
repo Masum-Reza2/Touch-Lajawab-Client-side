@@ -12,6 +12,7 @@ import useSecureAxios from "../../Hooks/useSecureAxios";
 
 /* eslint-disable react/no-unescaped-entities */
 const Login = () => {
+    const { mode } = useGlobal();
     const [showPaas, setShowPaas] = useState(false);
     const navigate = useNavigate();
     const { state } = useLocation();
@@ -74,10 +75,10 @@ const Login = () => {
             </div>
 
             <div className="flex-1">
-                <form onSubmit={handleLogin} className="relative  flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5">
+                <form onSubmit={handleLogin} className={`relative  flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl ${mode ? 'bg-black text-gray-400' : 'bg-white'} bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5`}>
 
                     {/* heading */}
-                    <div className="relative mx-4 -mt-6 mb-4 grid h-16 md:h-28 place-items-center overflow-hidden rounded-xl bg-sky-500 bg-clip-border text-white shadow-lg shadow-gray-300">
+                    <div className={`relative mx-4 -mt-6 mb-4 grid h-16 md:h-28 place-items-center overflow-hidden rounded-xl bg-sky-500 bg-clip-border text-white shadow-lg  ${mode ? '' : 'shadow-gray-300'}`}>
                         <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
                             Login
                         </h3>
@@ -139,7 +140,7 @@ const Login = () => {
 
                 </form>
 
-                <div className="flex w-[90vw] md:w-[60vw] lg:w-[40vw] border flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5 mt-5 2xl:w-[25vw]">
+                <div className={`flex w-[90vw] md:w-[60vw] lg:w-[40vw] border flex-col rounded-xl bg-clip-border  shadow-md shadow-black mx-auto py-5 mt-5 2xl:w-[25vw] ${mode ? 'bg-black text-gray-400' : 'bg-white text-gray-700'}`}>
                     <p className="text-center font-bold underline my-2">or</p>
                     <div className="w-full flex justify-center">
                         <button onClick={() => handleAdditional(googleLogin)} className="mt-2 btn hover:bg-black rounded-md w-[90%] bg-sky-500 text-white ">Login with Google<FcGoogle className="text-2xl" /></button>
