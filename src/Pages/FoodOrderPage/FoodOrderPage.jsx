@@ -1,13 +1,15 @@
 import { Link, useLoaderData } from "react-router-dom";
+import useGlobal from "../../Hooks/useGlobal";
 
 const FoodOrderPage = () => {
     const currentFood = useLoaderData();
+    const { mode } = useGlobal();
 
     const { foodName, img, foodCategory, quantity, price, foodOrigin, ownerName, shortDesc, _id } = currentFood;
 
     return (
         <div className="py-2 md:py-5 w-[95%] mx-auto md:w-full">
-            <div className="relative md:w-[50%] md:mx-auto flex flex-col text-gray-700 bg-white shadow-md rounded-xl bg-clip-border max-w-7xl mx-auto shadow-sky-900">
+            <div className={`relative md:w-[50%] md:mx-auto flex flex-col   shadow-md rounded-xl bg-clip-border max-w-7xl mx-auto  ${mode ? 'bg-black shadow-sky-400 text-gray-400' : 'bg-white shadow-sky-900 text-gray-700'}`}>
                 <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white h-56 lg:h-80 rounded-xl bg-clip-border">
                     <img
                         src={img}
@@ -37,7 +39,7 @@ const FoodOrderPage = () => {
                             <span className=''>Available Quantity</span> : {quantity}
                         </p>
                     </div>
-                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+                    <p className={`block font-sans text-sm antialiased font-normal leading-normal opacity-75 ${mode ? 'text-gray-400' : 'text-gray-700'}`}>
                         {shortDesc}
                     </p>
                 </div>

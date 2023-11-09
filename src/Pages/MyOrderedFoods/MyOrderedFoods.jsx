@@ -6,7 +6,7 @@ import OrderedItems from "./OrderedItems";
 import Footer from "../../Components/Footer/Footer";
 
 const MyOrderedFoods = () => {
-    const { user } = useGlobal();
+    const { user, mode } = useGlobal();
     const secureAxios = useSecureAxios();
 
     const { isPending, error, data, refetch } = useQuery({
@@ -25,16 +25,16 @@ const MyOrderedFoods = () => {
 
     return (
         <>
-            <div className="py-5 min-h-screen">
+            <div className={`py-5 min-h-screen ${mode ? 'text-gray-400' : ''}`}>
                 <h1 className="text-center font-bold text-lg md:text-xl">Your ordered food items : {userSpecificOrder.length} </h1>
                 <div className="overflow-x-auto py-5">
                     <table className="table">
                         {/* head */}
                         <thead>
-                            <tr>
+                            <tr className={`${mode ? 'text-gray-200' : ''}`}>
                                 <th>
                                 </th>
-                                <th>Food Image</th>
+                                <th >Food Image</th>
                                 <th>Food Name</th>
                                 <th>Added time</th>
                                 <th>Price</th>
