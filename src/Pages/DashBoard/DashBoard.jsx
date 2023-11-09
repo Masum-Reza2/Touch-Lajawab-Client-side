@@ -2,8 +2,10 @@
 import { useEffect, useState } from "react"
 import DashPieChart from "../../Components/PieChart/DashPieChart"
 import useSecureAxios from "../../Hooks/useSecureAxios";
+import useGlobal from "../../Hooks/useGlobal";
 
 const DashBoard = () => {
+    const { mode } = useGlobal();
     const secureAxios = useSecureAxios();
 
     const [emailUser, setEmailUser] = useState([]);
@@ -25,18 +27,17 @@ const DashBoard = () => {
             })
     }, [])
 
-    console.log(otherUser)
 
     return (
-        <div>
-            <h1 className="text-center mt-5 text-2xl font-bold text-gray-600">Dash-Board</h1>
+        <div className={`${mode ? 'text-gray-400' : ''}`}>
+            <h1 className={`text-center mt-5 text-2xl font-bold  ${mode ? 'text-gray-400' : 'text-gray-600'}`}>Dash-Board</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 min-h-screen gap-5 p-5">
 
-                <div className=" border rounded-lg shadow-md shadow-sky-900">
+                <div className={`border rounded-lg shadow-md  ${mode ? 'shadow-sky-400' : 'shadow-sky-900'}`}>
                     <DashPieChart emailUser={emailUser} otherUser={otherUser} />
                 </div>
 
-                <div className=" border rounded-lg flex flex-col  justify-center py-5 shadow-md shadow-sky-900">
+                <div className={`border rounded-lg flex flex-col  justify-center py-5 shadow-md  ${mode ? 'shadow-sky-400' : 'shadow-sky-900'}`}>
                     <h1 className="text-center font-bold underline">Email user's</h1>
 
 
@@ -67,7 +68,7 @@ const DashBoard = () => {
 
                 </div>
 
-                <div className=" border rounded-lg flex flex-col  justify-center py-5 shadow-md shadow-sky-900">
+                <div className={`border rounded-lg flex flex-col  justify-center py-5 shadow-md ${mode ? 'shadow-sky-400' : 'shadow-sky-900'}`}>
                     <h1 className="text-center font-bold underline">Google or Github user's</h1>
 
                     <div className="overflow-scroll">
