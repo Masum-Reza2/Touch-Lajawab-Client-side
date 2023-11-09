@@ -12,6 +12,6 @@
 - Once user buy a food product, it update the available quantity and sell count in the data base.(Out of requirements)
 - User can't buy his own added food products, because it not make sense.The system will prevent him and give a sweet alert.
 - User can't buy less then 0 or more then available quantity food product. The system will prevent him and give a sweet alert.
-- User will get the result of search without typing a button, and the UI is user friendly.
+- User will get the result of search without clicking a button, and the UI is so user friendly.
 - Pagination feature enabled on this project with dynamic system, user can define how many items should be on a page.
 - A simple dashboard added, here user can see the total number of email user and google or github user including a chart.
