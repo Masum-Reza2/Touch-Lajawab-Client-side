@@ -5,7 +5,7 @@ import { signOut } from "firebase/auth";
 import auth from "../ConfigFiles/firebase.config";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://restaurant-server-ch2eppky4-masum-rezas-projects.vercel.app',
+    baseURL: 'https://restaurant-server-8v6lalu6n-masum-rezas-projects.vercel.app',
     withCredentials: true,
 });
 
