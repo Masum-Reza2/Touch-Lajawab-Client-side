@@ -8,6 +8,7 @@ import useGlobal from "../../Hooks/useGlobal";
 import useSecureAxios from "../../Hooks/useSecureAxios";
 
 const Register = () => {
+    const { mode } = useGlobal();
     const [showPaas, setShowPaas] = useState(false);
     const { createUser, logOutUser, updateUserProfile } = useGlobal();
     const navigate = useNavigate();
@@ -72,10 +73,10 @@ const Register = () => {
                 <img src={registerImg} alt="" />
             </div>
 
-            <form onSubmit={handleRegister} className="relative flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5 lg:-translate-x-10">
+            <form onSubmit={handleRegister} className={`relative flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl ${mode ? 'bg-black text-gray-400' : 'bg-white'} bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5 lg:-translate-x-10`}>
 
                 {/* heading */}
-                <div className="relative mx-4 -mt-6 mb-4 grid h-16 md:h-28 place-items-center overflow-hidden rounded-xl bg-sky-500 bg-clip-border text-white shadow-lg shadow-gray-300">
+                <div className={`relative mx-4 -mt-6 mb-4 grid h-16 md:h-28 place-items-center overflow-hidden rounded-xl bg-sky-500 bg-clip-border text-white shadow-lg  ${mode ? '' : 'shadow-gray-300'}`}>
                     <h3 className="block font-sans text-3xl font-semibold leading-snug tracking-normal text-white antialiased">
                         Registration
                     </h3>
