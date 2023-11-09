@@ -24,7 +24,7 @@ const Router = createBrowserRouter([
             { index: true, element: <Home /> },
             {
                 path: '/allfood', element: <AllFoodItems />,
-                loader: () => fetch('https://restaurant-server-9gmdy7jpl-masum-rezas-projects.vercel.app/foodCount')
+                loader: () => fetch('https://restaurant-server-bay.vercel.app/foodCount')
             },
             { path: '/blogs', element: <Blog /> },
             { path: '/dashBoard', element: <DashBoard /> },
@@ -37,15 +37,15 @@ const Router = createBrowserRouter([
             { path: '/myOrderedFoods', element: <PrivateRoute><MyOrderedFoods /></PrivateRoute> },
             {
                 path: '/update/:id', element: <PrivateRoute><UpdateProduct /></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://restaurant-server-9gmdy7jpl-masum-rezas-projects.vercel.app/allFoods/${params.id}`)
+                loader: ({ params }) => fetch(`https://restaurant-server-bay.vercel.app/allFoods/${params.id}`)
             },
             {
                 path: '/orderFood/:id', element: <FoodOrderPage />,
-                loader: ({ params }) => fetch(`https://restaurant-server-9gmdy7jpl-masum-rezas-projects.vercel.app/allFoods/${params.id}`)
+                loader: ({ params }) => fetch(`https://restaurant-server-bay.vercel.app/allFoods/${params.id}`)
             },
             {
                 path: '/confirmOrder/:id', element: <PrivateRoute><ConfirmOrder /></PrivateRoute>,
-                loader: ({ params }) => fetch(`https://restaurant-server-9gmdy7jpl-masum-rezas-projects.vercel.app/allFoods/${params.id}`)
+                loader: ({ params }) => fetch(`https://restaurant-server-bay.vercel.app/allFoods/${params.id}`)
             }
         ]
     }
