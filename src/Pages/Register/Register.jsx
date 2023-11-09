@@ -73,7 +73,7 @@ const Register = () => {
                 <img src={registerImg} alt="" />
             </div>
 
-            <form onSubmit={handleRegister} className={`relative flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl ${mode ? 'bg-black text-gray-400' : 'bg-white'} bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5 lg:-translate-x-10`}>
+            <form onSubmit={handleRegister} className={`relative flex w-[90vw] md:w-[60vw] lg:w-[40vw] 2xl:w-[25vw] flex-col rounded-xl ${mode ? 'bg-black text-white' : 'bg-white'} bg-clip-border text-gray-700 shadow-md shadow-black mx-auto py-5 lg:-translate-x-10`}>
 
                 {/* heading */}
                 <div className={`relative mx-4 -mt-6 mb-4 grid h-16 md:h-28 place-items-center overflow-hidden rounded-xl bg-sky-500 bg-clip-border text-white shadow-lg  ${mode ? '' : 'shadow-gray-300'}`}>
@@ -175,7 +175,7 @@ const Register = () => {
                                 </span>
                             </label>
                             <label
-                                className="mt-px cursor-pointer select-none font-light text-gray-700"
+                                className={`mt-px cursor-pointer select-none font-light ${mode ? 'text-white' : 'text-gray-700'}`}
                                 htmlFor="checkbox"
                             >
                                 Accept our terms and conditions?

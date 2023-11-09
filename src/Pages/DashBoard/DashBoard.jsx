@@ -45,7 +45,7 @@ const DashBoard = () => {
                         <table className="table">
                             {/* head */}
                             <thead>
-                                <tr>
+                                <tr className={`${mode ? 'text-white' : ''}`}>
                                     <th></th>
                                     <th>Name</th>
                                     <th>Email</th>
@@ -75,7 +75,7 @@ const DashBoard = () => {
                         <table className="table">
                             {/* head */}
                             <thead>
-                                <tr>
+                                <tr className={`${mode ? 'text-white' : ''}`}>
                                     <th></th>
                                     <th>Name</th>
                                     <th>Email</th>
